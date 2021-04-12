@@ -2,6 +2,8 @@ import { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import TabNav from './components/TabNav';
+import {BrowerRouter as Router, Route, Switch} from 'react-router-dom';
+
 
 class App extends Component {
   constructor(props) {
