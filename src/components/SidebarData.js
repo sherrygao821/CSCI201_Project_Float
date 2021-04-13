@@ -8,22 +8,22 @@ import profileButton from './icons/profile.png'
 export const SidebarData = [
     {
         path: '/',
-        icon: <img src={homeButton} alt = "Home" />,
+        icon: <img src={homeButton} alt = "Home" draggable="false" />,
         cName: 'nav-text'
     },
     {
         path: '/dms',
-        icon: <img src={dmsButton} alt="Dms" />,
+        icon: <img src={dmsButton} alt="Dms" draggable="false" />,
         cName: 'nav-text'
     },
     {
         path: '/notifications',
-        icon: <img src={notificationsButton} alt = "Notification" />,
+        icon: <img src={notificationsButton} alt = "Notification" draggable="false" />,
         cName: 'nav-text'
     },
     {
         path: '/profile',
-        icon: <img src={profileButton} alt = "Profile" />,
+        icon: <img src={profileButton} alt = "Profile" draggable="false" />,
         cName: 'nav-text'
     }
 ];

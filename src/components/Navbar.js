@@ -21,11 +21,13 @@ function Navbar() {
                 <div className='nav-menu-items'>
                     {SidebarData.map((item, index) => {
                         return (
-                            <Link id = "links" to={item.path}>
-                                <div id = "circleButton" style={circleStyle} key = {index} className = {item.cName}>                                    
-                                    {item.icon}
-                                </div>
-                            </Link>
+                            <div key = {index} className = {item.cName}>                                    
+                                <Link id = "links" to={item.path}>
+                                    <div id = "circleButton" style={circleStyle}>      
+                                        {item.icon}
+                                    </div>
+                                </Link>
+                            </div>
                         );
                     })}
                 </div>
