@@ -1,0 +1,22 @@
+.nav-menu{
+    background-color: #83ACA2;
+    text-align: center; 
+    width: 165px;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    justify-content: flex-start;
+    flex-direction: column;
+    
+}
+
+#circleButton{
+    text-align: center; 
+    background-color: #8FCCDF;
+}
+
+img {
+    max-width: 50px;
+    height: auto;
+}
+

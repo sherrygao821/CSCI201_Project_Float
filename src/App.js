@@ -1,34 +1,31 @@
-import { Component } from 'react';
+import React from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
-import TabNav from './components/TabNav';
-import {BrowerRouter as Router, Route, Switch} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from './pages/Home';
+import Dms from './pages/Dms';
+import Notifications from './pages/Notifications';
+import Profile from './pages/Profile';
 
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedPage: "Home"
-    };
-  }
+function App() {
+  return (
 
-  setSelectedPage = (tab) => {
-    this.setState({ selectedPage: tab });
-    // TODO: navigate to that specific page
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <TabNav
-          tabs={["Create", "Home", "Notification", "Profile"]}
-          setSelectedPage={this.setSelectedPage}
-        ></TabNav>
-        <SearchBar></SearchBar>
-      </div>
-    );
-  }
+    <>
+      <Router>
+            <Navbar />
+          <div className = 'feed'>
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/dms' exact component={Dms} />
+              <Route path='/notifications' exact component={Notifications} />
+              <Route path='/profile' exact component={Profile} />
+            </Switch>
+          </div>
+      </Router>
+    </>
+  );
 }
 
 export default App;
