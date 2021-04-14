@@ -15,6 +15,17 @@
     background-color: black;
 }
 
+#addButton{
+    text-align: center;
+    background-color: #90D9A0;
+    transition: 0.5s;
+}
+
+#addButton:hover{
+    background-color: black;
+}
+
+
 img {
     max-width: 50px;
     height: auto;
