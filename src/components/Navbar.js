@@ -52,7 +52,7 @@ function Navbar() {
                 
                 {SidebarData.map((item, index) => {
                     return (
-                        <div key = {index} className = {item.cName}> 
+                        <div key = {index}> 
                             <DisplayIcon itemPath = {item.path} itemIcon = {item.icon} />
                         </div>
                     );

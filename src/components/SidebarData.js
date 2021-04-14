@@ -10,26 +10,21 @@ export const SidebarData = [
     {
         path: '',
         icon: <img src={addButton} alt = "Add Post" draggable="false" />,
-        cName: 'nav-text'
     },
     {
         path: '/',
         icon: <img src={homeButton} alt = "Home" draggable="false" />,
-        cName: 'nav-text'
     },
     {
         path: '/dms',
         icon: <img src={dmsButton} alt="Dms" draggable="false" />,
-        cName: 'nav-text'
     },
     {
         path: '/notifications',
         icon: <img src={notificationsButton} alt = "Notification" draggable="false" />,
-        cName: 'nav-text'
     },
     {
         path: '/profile',
         icon: <img src={profileButton} alt = "Profile" draggable="false" />,
-        cName: 'nav-text'
     }
 ];
