@@ -3,16 +3,16 @@
     text-align: center; 
     width: 165px;
     height: 100vh;
-    display: flex;
-    position: fixed;
-    justify-content: flex-start;
-    flex-direction: column;
-    
 }
 
 #circleButton{
     text-align: center; 
     background-color: #8FCCDF;
+    transition: 0.5s;
+}
+
+#circleButton:hover{
+    background-color: black;
 }
 
 img {

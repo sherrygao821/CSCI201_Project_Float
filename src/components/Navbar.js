@@ -2,6 +2,7 @@ import React from 'react';
 import {SidebarData} from './SidebarData';
 import './Navbar.css';
 import {Link} from 'react-router-dom';
+import '../App.css';
 
 function Navbar() {
 
@@ -16,23 +17,23 @@ function Navbar() {
         top:0
       };
     return(
-        <div>
-            <nav className='nav-menu'>
-                <div className='nav-menu-items'>
-                    {SidebarData.map((item, index) => {
-                        return (
-                            <div key = {index} className = {item.cName}>                                    
-                                <Link id = "links" to={item.path}>
-                                    <div id = "circleButton" style={circleStyle}>      
-                                        {item.icon}
-                                    </div>
-                                </Link>
-                            </div>
-                        );
-                    })}
-                </div>
-            </nav>
+
+        <div className='nav-menu'>
+            <div className='nav-menu-items'>
+                {SidebarData.map((item, index) => {
+                    return (
+                        <div key = {index} className = {item.cName}>                                    
+                            <Link id = "links" to={item.path}>
+                                <div id = "circleButton" style={circleStyle}>      
+                                    {item.icon}
+                                </div>
+                            </Link>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
+
     );
 }
 

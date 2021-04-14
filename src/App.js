@@ -12,19 +12,19 @@ import Profile from './pages/Profile';
 function App() {
   return (
 
-    <>
+    <div className ='app'>
       <Router>
-            <Navbar />
-          <div className = 'feed'>
+          <Navbar />
+          {/* <div className = 'feed'> */}
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/dms' exact component={Dms} />
               <Route path='/notifications' exact component={Notifications} />
               <Route path='/profile' exact component={Profile} />
             </Switch>
-          </div>
+          {/* </div> */}
       </Router>
-    </>
+    </div>
   );
 }
 
