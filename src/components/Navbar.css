@@ -18,5 +18,5 @@
 img {
     max-width: 50px;
     height: auto;
+    user-select: none; 
 }
-
