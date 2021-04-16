@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './addpost.css'
 
 
 function Addpost(props){
@@ -16,6 +17,7 @@ function Addpost(props){
       return (
 
         <form onSubmit={handleSubmit}>
+            
             <textarea placeholder="what's on your mind...?" onChange={handleChange} />
           <input type="submit" value="Submit" />
         </form>
