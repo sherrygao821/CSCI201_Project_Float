@@ -3,7 +3,7 @@ import {SidebarData} from './SidebarData';
 import './Navbar.css';
 import {Link} from 'react-router-dom';
 import '../App.css';
-import AddPost from '../pages/AddPost';
+import Modal from './Modal';
 
 function DisplayIcon(props){
 
@@ -24,7 +24,7 @@ function DisplayIcon(props){
             
             <div id = "addButton" style={circleStyle} onClick={() => setShow(true)}> 
                 {props.itemIcon}
-                <AddPost show={show} />
+                <Modal onClose={() => setShow(false)} show={show} title="New Post" publish="publish"/>
             </div>
             
         );
@@ -43,8 +43,6 @@ function DisplayIcon(props){
 
 function Navbar() {
 
-
-      
     return(
 
         <div className='nav-menu'>

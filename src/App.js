@@ -7,11 +7,15 @@ import Home from './pages/Home';
 import Dms from './pages/Dms';
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
+// import Addpost from './components/Addpost';
 
 
 function App() {
   return (
 
+    // <div> 
+    //   <Addpost />
+    // </div>
     <div className ='app'>
       <Router>
           <Navbar />
