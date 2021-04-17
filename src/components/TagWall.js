@@ -1,4 +1,4 @@
-import { Children, Component } from 'react';
+import { Component } from 'react';
 import "../components/TagWall.css";
 
 class TagWall extends Component {
