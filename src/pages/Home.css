@@ -1,0 +1,25 @@
+.home{
+    display: inline-flex;
+}
+
+.home .right{
+    margin-left: 170px;
+    text-align: center;
+}
+
+.home .right .tagWallTitle{
+    margin-top: 60px;
+    margin-bottom: 48px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #626262;
+}
+
+.home .right TagWall{
+
+}

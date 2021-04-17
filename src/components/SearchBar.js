@@ -24,7 +24,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="searchBar">
-        <img className="left" src={require('./icons/search.png')} alt="" />
+        <img className="left" src="/icons/search.png" alt="" />
         <input
           className="mid"
           onChange={(e) => this.bindChange(e)}

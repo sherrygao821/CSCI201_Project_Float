@@ -1,11 +1,10 @@
-textarea{
-    outline: none;
-    resize: none;
-
-    width: 100%; 
-    border: 4%; 
-    padding: 1%; 
-    margin: 0;
-    height: 0;
-    padding-bottom: 60%;
+textarea {
+  outline: none;
+  resize: none;
+  width: 100%;
+  border: 4%;
+  padding: 1%;
+  margin: 0;
+  height: 0;
+  padding-bottom: 60%;
 }

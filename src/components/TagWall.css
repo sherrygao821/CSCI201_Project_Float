@@ -1,0 +1,23 @@
+.tag{  
+    width: auto;
+    height: 41px;
+
+    background: #F6F6F6;
+    border-radius: 110px;
+    color: #626262;
+    text-align: center;
+    display: flex;
+    margin-top: 14px;
+}
+
+.taginside{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+}
