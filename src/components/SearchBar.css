@@ -15,14 +15,13 @@
   padding-right: 24px;
 }
 .searchBar .mid {
-  height: 20px;
+  height: 45px;
   width: 467px;
   padding-top: 20px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-  line-height: 23px;
   color: #626262;
   background: #f6f6f6;
   border: none;
