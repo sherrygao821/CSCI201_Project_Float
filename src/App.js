@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Dms from './pages/Dms';
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
+import loginPage from './pages/loginPage';
 // import Addpost from './components/Addpost';
 
 
@@ -18,12 +19,12 @@ function App() {
     <div className ='app'>
       <Router>
           <Navbar />
-          {/* <div className = 'feed'> */}
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/dms' exact component={Dms} />
               <Route path='/notifications' exact component={Notifications} />
               <Route path='/profile' exact component={Profile} />
+              <Route path='/login' exact component={loginPage} />
             </Switch>
           {/* </div> */}
       </Router>

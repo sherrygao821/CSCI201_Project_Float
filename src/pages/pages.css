@@ -1,5 +1,5 @@
 
-.dms, .home, .notifications, .profile{
+.dms, .home, .notifications, .profile .loginPage{
     flex-grow: 1;
     font-size: 3rem;
     background-color: #E5E5E5;

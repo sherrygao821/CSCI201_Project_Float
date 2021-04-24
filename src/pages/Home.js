@@ -9,12 +9,12 @@ function Home() {
 
     <div className='home' >
       <div class="left">
-        <SearchBar></SearchBar>
-        <PostFeed></PostFeed>
+        <SearchBar />
+        <PostFeed />
       </div>
       <div class="right">
         <div class="tagWallTitle">Popular Tags</div>
-        <TagWall></TagWall>
+        <TagWall />
       </div>
     </div>
   );

@@ -8,14 +8,14 @@ const Modal = props => {
         <div className = {`modal ${props.show ? 'show' : ''}`} onClick = {props.onClose}>
             <div className = "modal-content" onClick = {e => e.stopPropagation()}>
                 <div className = "modal-header">
-                    <button id="close" onClick={props.onClose} className = "button">Close</button>
-                    <h4 id="title">{props.title}</h4>
-                    {/* <div>
-                        {props.publish
-                            ? <button className = "button">Publish</button>
-                            : null
-                        }
-                    </div> */}
+                    <div id="closeButtonDiv">
+                        <button id="close" onClick={props.onClose} className = "button">Close</button>
+                    </div>
+                    <div id="titleDiv">
+                        <h4 id="title">{props.title}</h4>
+                    </div>
+                    <div id="emptyDiv">
+                    </div>
                 </div>
                 <div className = "modal-body">
                     <div>                        
