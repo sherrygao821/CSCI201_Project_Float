@@ -10,35 +10,49 @@ class Post extends Component {
         postComments: [],
         anonymousName: "baby lizard",
         inputComment: "",
-    };
+        heartPath: "/icons/unheart.png",
+        likePost: false
+    }
 
     constructor(props) {
-        var heartPath = "/icons/unheart.png";
-        var isLiked = new Boolean(false);
         super(props);
-        if (isLiked === true) {
-            heartPath = "/icons/heart.png"
+        var isLiked = sessionStorage.getItem('likedPostIDs')
+        for(var i = 0; i < isLiked.length; i++){
+            if(isLiked[i] === props.post.postID){
+                this.setState({
+                    heartPath: "/icons/heart.png",
+                    likePost: true
+                })
+                break;
+            }
         }
     };
 
     handleHeart = () => {
-        if (this.isLiked === true) {
-            this.setState({
-                isLiked: "false",
-                heartPath: "/icons/unheart.png"
+        if (this.state.likePost === true) {
+            axios.post('http://35.236.53.120:3000/api/post/dislike', {
+                postID: this.props.postID,
+			    userUuid: sessionStorage.getItem('uuid')
+            }).then((response) => {
+                this.setState({
+                    likePost: false,
+                    heartPath: "/icons/unheart.png"
+                })
             })
-            // TODO: delete current user's liking status of this post
         } else {
-            this.setState({
-                isLiked: "true",
-                heartPath: "/icons/heart.png"
+            axios.post('http://35.236.53.120:3000/api/post/like', {
+                postID: this.props.postID,
+			    userUuid: sessionStorage.getItem('uuid')
+            }).then((response) => {
+                this.setState({
+                    likePost: true,
+                    heartPath: "/icons/heart.png"
+                })
             })
-            // TODO: add current user's liking status of this post
         }
     };
 
     handleComment = () => {
-        // TODO: receive comments for this post from the back end
         console.log(this.props.post.comments);
         this.setState({
             postComments: this.props.post.comments,
@@ -86,21 +100,21 @@ class Post extends Component {
 
     render() {
         let comments = [];
-        this.state.postComments.map(comment => (
-            comments.push(<Comment name={comment.anonymousPosterName} content={comment.content} />)
+        this.state.postComments.map((comment, i) => (
+            comments.push(<Comment key={i} name={comment.anonymousPosterName} content={comment.content} />)
         ))
         return (
-            <div class="wrap">
-                <div class="top">
-                    <span class="name">{this.props.post.anonymousPosterName}</span>
-                    {this.props.post.tags.map(tag => <span class="tags">{tag}</span>)}
+            <div className="wrap">
+                <div className="top">
+                    <span className="name">{this.props.post.anonymousPosterName}</span>
+                    {this.props.post.tags.map((tag, i) => <span className="tags" key={i}>{tag}</span>)}
                 </div>
-                <div class="mid">
+                <div className="mid">
                     {this.props.post.content}
                 </div>
-                <div class="bot">
-                    <input id="heart" type="image" src={this.heartPath} alt="" class="heart" onClick={() => this.handleHeart()} />
-                    <input id="comment" type="image" src="/icons/comment.png" alt="" class="comment" onClick={() => this.handleComment()} />
+                <div className="bot">
+                    <input id="heart" type="image" src={this.state.heartPath} alt="" className="heart" onClick={() => this.handleHeart()} />
+                    <input id="comment" type="image" src="/icons/comment.png" alt="" className="comment" onClick={() => this.handleComment()} />
                 </div>
                 <div>
                     <Modal isOpen={this.state.modalIsOpened} ariaHideApp={false} style={{

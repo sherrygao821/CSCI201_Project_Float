@@ -46,11 +46,11 @@ class Profile extends Component{
   render() {
     return (
       <div className='profile'>
-      <div class="header">
-        <label class="left" onClick={() => this.handleYourPosts()} style={this.state.yourPosts}><span class="left-text">Your posts</span></label>
-        <label class="right" onClick={() => this.handleLikedPosts()} style={this.state.likedPosts}><span class="right-text">Liked posts</span></label>
+      <div className="header">
+        <label className="left" onClick={() => this.handleYourPosts()} style={this.state.yourPosts}><span className="left-text">Your posts</span></label>
+        <label className="right" onClick={() => this.handleLikedPosts()} style={this.state.likedPosts}><span className="right-text">Liked posts</span></label>
       </div>
-      <div class="posts">
+      <div className="posts">
         <PostFeed></PostFeed>
       </div>
     </div>

@@ -8,12 +8,12 @@ function Home() {
   return (
 
     <div className='home' >
-      <div class="left">
+      <div className="left">
         <SearchBar />
         <PostFeed/>
       </div>
-      <div class="right">
-        <div class="tagWallTitle">Popular Tags</div>
+      <div className="right">
+        <div className="tagWallTitle">Popular Tags</div>
         <TagWall />
       </div>
     </div>

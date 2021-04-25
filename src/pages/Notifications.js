@@ -9,7 +9,7 @@ function Notifications() {
   }
   return (
     <div className='notifications'>
-      <div class="title">Notifications</div>
+      <div className="title">Notifications</div>
       <div>{notes}</div>
     </div>
   );

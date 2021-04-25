@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import "../components/TagWall.css";
-import { Redirect } from 'react-router';
 
 class TagWall extends Component {
 
@@ -19,7 +18,6 @@ class TagWall extends Component {
     render() {
         // TODO: import tags from the back end and redirect to a new page
         var items = [];
-        const { redirect } = this.state;
         
         /*
         if (redirect) {
@@ -28,7 +26,7 @@ class TagWall extends Component {
         */
 
         for (var i = 0; i < this.state.tags.length; i++) {
-            items.push(<div class="tag" onClick={this.getPostsUnderTag.bind(this, i)}><span class="taginside">{this.state.tags[i]}</span></div>);
+            items.push(<div className="tag" key={i} onClick={this.getPostsUnderTag.bind(this, i)}><span className="taginside">{this.state.tags[i]}</span></div>);
 
         }
 

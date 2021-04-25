@@ -39,13 +39,12 @@ class PostFeed extends Component{
         console.log(this.state.posts);
         // console.log(this.state.posts.data);
         
-        if(this.state.posts.status == true){
+        if(this.state.posts.status === true){
             console.log("length:" + this.state.posts.data.length);
-            for(var i = 0; i < this.state.posts.data.length; i++){
-                items.push(<Post post = {this.state.posts.data[i]}/>) 
-            }
+            this.state.posts.data.map((post, i) => 
+            items.push(<Post key={i} post = {post}/>) 
+        )
         }
-        
         
         /*
         this.state.posts.data.map((post) => 
