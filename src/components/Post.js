@@ -31,7 +31,7 @@ class Post extends Component {
     handleHeart = () => {
         if (this.state.likePost === true) {
             axios.post('http://35.236.53.120:3000/api/post/dislike', {
-                postID: this.props.postID,
+                postID: this.props.post.postID,
 			    userUuid: sessionStorage.getItem('uuid')
             }).then((response) => {
                 this.setState({
@@ -40,8 +40,9 @@ class Post extends Component {
                 })
             })
         } else {
+            console.log("postID: " + this.props.post.postID)
             axios.post('http://35.236.53.120:3000/api/post/like', {
-                postID: this.props.postID,
+                postID: this.props.post.postID,
 			    userUuid: sessionStorage.getItem('uuid')
             }).then((response) => {
                 this.setState({
@@ -71,24 +72,18 @@ class Post extends Component {
         console.log("postID: " + this.props.post.postID);
         if (this.state.inputComment.trim() !== "") {
             // Calling API: add the comment to the post
+            
             axios.post('http://35.236.53.120:3000/api/comment/make/' + this.props.post.postID, {
                 anonymousPosterName: this.state.anonymousName,
                 content: this.state.inputComment
             }).then((response) => {
                 console.log(response);
-                alert("Your post is created successfully");
+                alert("Your comment is created successfully");
                 // TODO: add the new post to the current page
-                /*
-                comments.push(
-                    {
-                        anonymousPosterName: anonymousName,
-                        content: inputComment
-                    }
-                )
-                */
             }, (error) => {
                 console.log(error);
             });
+             
         }
     };
 
