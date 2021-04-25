@@ -53,6 +53,8 @@ class Post extends Component {
     }
 
     addComment = () => {
+        console.log("comment: " + this.state.inputComment);
+        console.log("postID: " + this.props.post.postID);
         if (this.state.inputComment.trim() !== "") {
             // Calling API: add the comment to the post
             axios.post('http://35.236.53.120:3000/api/comment/make/' + this.props.post.postID, {

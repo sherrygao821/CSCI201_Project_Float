@@ -1,21 +1,40 @@
 import { Component } from 'react';
 import "../components/TagWall.css";
+import { Redirect } from 'react-router';
 
 class TagWall extends Component {
 
-    getPostsUnderTag = (tag) => {
-        // TODO: direct to tagpage 
+    state = {
+        tags: ["#usc", "#ucla", "#cornell", "#northwestern", "#emory", "#ucb"],
+        postIDs: [],
+        tagClicked: ""
+    }
+
+    getPostsUnderTag = (i) => {
+        this.setState({
+            tagClicked: this.state.tags[i]
+        })
     }
 
     render() {
-        // TODO: import tags from the back end
-        var tags = [];
-        for(var i = 0; i < 10; i++){
-            tags.push(<div class="tag" onClick={() => this.getPostsUnderTag(tags[i])}><span class="taginside">tags[i]</span></div>);
+        // TODO: import tags from the back end and redirect to a new page
+        var items = [];
+        const { redirect } = this.state;
+        
+        /*
+        if (redirect) {
+            return <Redirect to="/profile/" />
         }
+        */
+
+        for (var i = 0; i < this.state.tags.length; i++) {
+            items.push(<div class="tag" onClick={this.getPostsUnderTag.bind(this, i)}><span class="taginside">{this.state.tags[i]}</span></div>);
+
+        }
+
         return (
             <div>
-                <div>{tags}</div>
+                {items}
             </div>
         );
     }

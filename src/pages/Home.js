@@ -10,7 +10,7 @@ function Home() {
     <div className='home' >
       <div class="left">
         <SearchBar />
-        <PostFeed />
+        <PostFeed/>
       </div>
       <div class="right">
         <div class="tagWallTitle">Popular Tags</div>
