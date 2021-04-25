@@ -10,7 +10,16 @@ class PostFeed extends Component{
                 tags:['#mentalHealth', '#help'], 
                 content:"Just had an argument with my parents...blah", 
                 likedCount:0,
-                comments:["Been there."],
+                comments:[
+                    {
+                        anonymousPosterName: "baby pig",
+                        content: "hi i am baby pig"
+                    },
+                    {
+                        anonymousPosterName: "baby cow",
+                        content: "hi i am baby cow"
+                    },
+                ],
                 anonymousPosterName:"zebra",
                 userUuid: 1,
              },
@@ -19,7 +28,16 @@ class PostFeed extends Component{
                 tags:['#mentalhealth'], 
                 content:"More...blah", 
                 likedCount:0,
-                comments:["Been there."],
+                comments:[
+                    {
+                        anonymousPosterName: "baby pig",
+                        content: "what the hell"
+                    },
+                    {
+                        anonymousPosterName: "baby cow",
+                        content: "damn u react!!!"
+                    },
+                ],
                 anonymousPosterName:"some animal",
                 userUuid: 2,
              }

@@ -66,3 +66,39 @@
   outline: none;
   border: none;
 }
+.commentBar{
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  height: 50px;
+  background: #F6F6F6;
+  border-radius: 20px;
+  bottom: 0px;
+  display: flex;
+}
+.commentBar .input {
+  margin-left: 20px;
+  padding-top: 5px;
+  width: 500px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  color: #626262;
+  background: #f6f6f6;
+  border: none;
+  outline: none;
+}
+.commentBar .send {
+  width: 100px;
+  background: #83ACA2;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  color: #ffffff;
+}

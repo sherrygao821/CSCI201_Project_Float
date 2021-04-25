@@ -1,0 +1,43 @@
+.wrapComment {
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    background: #F6F6F6;
+    border-radius: 60px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .wrapComment .topComment .nameComment {
+    width: auto;
+    height: 36px;
+    margin-left: 37px;
+    background: #FFFEFE;
+    border-radius: 40px;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 20px;
+    color: #727272;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .wrapComment .midComment {
+    width: 532px;
+    height: auto;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    /* or 150% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.045em;
+    text-transform: lowercase;
+    margin-left: 40px;
+    margin-top: 20px;
+    color: #626262;
+  }
