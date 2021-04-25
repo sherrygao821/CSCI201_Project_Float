@@ -9,12 +9,10 @@ function Addpost(props){
 
     function handleChangeText(event) {
       setText(event.target.value);
-      console.log(text)
     }
     
     function handleChangeTags(event) {
       setTags(event.target.value);
-      console.log(tags)
     }
 
     function handleSubmit(event) {
@@ -23,8 +21,7 @@ function Addpost(props){
       for(let i=0; i<tagsArr.length; i++){
         tagsArr[i]=tagsArr[i].trim()
       }
-      console.log(tagsArr)
-      console.log(text)
+
       axios.post('http://35.236.53.120:3000/api/post/make', {
         content: text,
         tags: tagsArr,
