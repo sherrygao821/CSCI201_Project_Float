@@ -5,50 +5,65 @@ import Comment from '../components/Comment';
 import axios from 'axios';
 
 class Post extends Component {
+    heartPath = "/icons/unheart.png";
+    likePost = false;
+    isLiked = [];
     state = {
         modalIsOpened: false,
         postComments: [],
         anonymousName: "baby lizard",
         inputComment: "",
-        heartPath: "/icons/unheart.png",
-        likePost: false
     }
 
     constructor(props) {
         super(props);
-        var isLiked = sessionStorage.getItem('likedPostIDs')
-        for(var i = 0; i < isLiked.length; i++){
-            if(isLiked[i] === props.post.postID){
-                this.setState({
-                    heartPath: "/icons/heart.png",
-                    likePost: true
-                })
+        this.presentHeart();
+    };
+
+    presentHeart = () => {
+        this.isLiked = JSON.parse(sessionStorage.getItem('likedPostIDs'));
+        for(var i = 0; i < this.isLiked.length; i++){
+            if(this.isLiked[i] === this.props.post.postID){
+                console.log("liked");
+                this.likePost = true;
+                this.heartPath = "/icons/heart.png";
                 break;
             }
         }
-    };
+    }
 
     handleHeart = () => {
-        if (this.state.likePost === true) {
+        console.log("this.state.likePost: " + this.likePost);
+        if (this.likePost) {
+            this.heartPath = "/icons/unheart.png";
+            console.log(this.heartPath);
             axios.post('http://35.236.53.120:3000/api/post/dislike', {
                 postID: this.props.post.postID,
 			    userUuid: sessionStorage.getItem('uuid')
             }).then((response) => {
-                this.setState({
-                    likePost: false,
-                    heartPath: "/icons/unheart.png"
-                })
+                this.likePost = false;
+                for(var i = 0; i < this.isLiked.length; i++){
+                    if(this.isLiked[i] === this.props.post.postID){
+                        this.isLiked.splice(i, 1);
+                        console.log(this.isLiked);
+                        sessionStorage.setItem('likedPostIDs', JSON.stringify(this.isLiked));
+                        console.log(sessionStorage);
+                        break;
+                    }
+                }
             })
         } else {
-            console.log("postID: " + this.props.post.postID)
+            this.heartPath = "/icons/heart.png";
+            console.log(this.heartPath);
             axios.post('http://35.236.53.120:3000/api/post/like', {
                 postID: this.props.post.postID,
 			    userUuid: sessionStorage.getItem('uuid')
             }).then((response) => {
-                this.setState({
-                    likePost: true,
-                    heartPath: "/icons/heart.png"
-                })
+                this.likePost = true;
+                this.isLiked.push(this.props.post.postID);
+                console.log(this.isLiked);
+                sessionStorage.setItem('likedPostIDs', JSON.stringify(this.isLiked))
+                console.log(sessionStorage);
             })
         }
     };
@@ -108,7 +123,7 @@ class Post extends Component {
                     {this.props.post.content}
                 </div>
                 <div className="bot">
-                    <input id="heart" type="image" src={this.state.heartPath} alt="" className="heart" onClick={() => this.handleHeart()} />
+                    <input id="heart" type="image" src={this.heartPath} alt="" className="heart" onClick={() => this.handleHeart()} />
                     <input id="comment" type="image" src="/icons/comment.png" alt="" className="comment" onClick={() => this.handleComment()} />
                 </div>
                 <div>
