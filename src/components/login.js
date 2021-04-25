@@ -17,6 +17,7 @@ class login extends Component {
         // this.changeHandler = this.changeHandler.bind(this);
     }
 
+    
 
     changeHandler = (e) =>{
         this.setState({[e.target.name]: e.target.value})
@@ -24,7 +25,6 @@ class login extends Component {
 
     submitHandler = (e) =>{
         e.preventDefault()
-        // console.log(this.state.data)
         const axios = require('axios');
         var self = this;
         axios.get('http://35.236.53.120:3000/api/auth/login?email='
@@ -34,9 +34,6 @@ class login extends Component {
             }
         })
         .then(function (response) {
-            console.log('hi')
-            
-            console.log(response.data.data.uuid)
             self.setState({
                 uuid: response.data.data.uuid,
                 postIDs: response.data.data.postIDs,
@@ -45,17 +42,13 @@ class login extends Component {
             
         })
         .catch(function (error) {
-            // console.log(error)
-            // console.log(error.request)
-            // console.log(error.response)
-            // const obj = JSON.parse(error.response)
+            alert(error.response.data.message)
         })
         .then(function (){
-            console.log(self.state)
             sessionStorage.setItem('uuid', self.state.uuid)
             sessionStorage.setItem('postIDs', self.state.postIDs)
             sessionStorage.setItem('likedPostIDs', self.state.likedPostIDs)
-            console.log(sessionStorage.getItem('uuid'))
+            console.log(sessionStorage)
         });
     }
     
@@ -68,7 +61,7 @@ class login extends Component {
                         <input type="text" name="email" value={email} onChange={this.changeHandler}/>
                     </div>
                     <div>
-                        <input type="password" name="psw" value={psw} onChange={this.changeHandler}/>
+                        <input type="password" autoComplete="current-password" name="psw" value={psw} onChange={this.changeHandler}/>
                     </div>
                     <div>
                         <button type="submit">Submit</button>
