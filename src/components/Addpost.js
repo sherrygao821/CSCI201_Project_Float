@@ -19,7 +19,7 @@ function Addpost(props){
         <form onSubmit={handleSubmit}>
             
             <textarea placeholder="what's on your mind...?" onChange={handleChange} />
-          <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
         </form>
       );
   }

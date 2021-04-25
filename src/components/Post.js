@@ -3,22 +3,15 @@ import "../components/Post.css";
 class Post extends Component{
     constructor(props) {
         var heartPath = "/icons/unheart.png";
+        var isLiked = new Boolean(false);
         super(props);
         if(this.props.isLiked === "true"){
             heartPath = "/icons/heart.png"
         }
-        // TODO: should also pass in the user's info so we can delete/add info
-        this.state = {
-            name: this.props.name,
-            tag: this.props.tag,
-            text: this.props.text,
-            isLiked: this.props.isLiked,
-            heartPath: heartPath
-        };
     };
 
     handleHeart = () => {
-        if(this.state.isLiked === "true"){
+        if(this.isLiked === "true"){
             this.setState({
                 isLiked: "false",
                 heartPath: "/icons/unheart.png"
@@ -41,14 +34,14 @@ class Post extends Component{
         return (
             <div class="wrap">
                 <div class="top">
-                    <span class="name">{this.state.name}</span>
-                    <span class="tags">{this.state.tag}</span>
+                    <span class="name">{this.props.post.anonymousPosterName}</span>
+                    {this.props.post.tags.map(tag => <span class="tags">{tag}</span>)}
                 </div>
                 <div class="mid">
-                    {this.state.text}
+                    {this.props.post.content}
                 </div>
                 <div class="bot">
-                    <input id="heart" type="image" src={this.state.heartPath} alt="" class="heart" onClick={this.handleHeart}/>
+                    <input id="heart" type="image" src={this.heartPath} alt="" class="heart" onClick={this.handleHeart}/>
                     <input id="comment" type="image" src="/icons/comment.png" alt="" class="comment" onClick={this.handleComment}/>
                 </div>
             </div>

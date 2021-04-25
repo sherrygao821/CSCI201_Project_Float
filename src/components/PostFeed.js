@@ -1,17 +1,57 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
 import Post from '../components/Post';
 
 class PostFeed extends Component{
+    state = {
+        posts : [
+            {
+                postID:1, 
+                tags:['#mentalHealth', '#help'], 
+                content:"Just had an argument with my parents...blah", 
+                likedCount:0,
+                comments:["Been there."],
+                anonymousPosterName:"zebra",
+                userUuid: 1,
+             },
+             {
+                postID:2, 
+                tags:['#mentalhealth'], 
+                content:"More...blah", 
+                likedCount:0,
+                comments:["Been there."],
+                anonymousPosterName:"some animal",
+                userUuid: 2,
+             }
+        ]
+    }
+
+    async componentDidMount() {
+        // pending > resolved (success) OR rejected (failure)
+        const { data: posts } = await Axios.get("http://35.236.53.120:3000/api/post/get");
+        this.setState({ posts });
+      }
+
+    handleAdd = async () => {
+        const obj = { 
+                        content:"Just had an argument with my parents...blah",
+                        tags: ['#mentalHealth'],
+                        anonymousPosterName:"zebra",
+                        userUuid: 1,
+                    };
+        const { data: post } = await Axios.post("http://35.236.53.120:3000/api/post/make", obj);
+
+        const posts = [post, ...this.state.posts];
+        this.setState({ posts });
+    };
+
     render() {
+        
         // TODO: receive json data of the feed from backend
         let posts = [];
-        for (var i = 0; i < 10; i++) {
-            posts.push(<Post name="baby zebra" tag="#mentalhealth" 
-            isLiked="true" text="Just had a huge argument with my parents. 
-            Living with them makes me feel like a child again. 
-            I really want to move out, but I can’t support myself 
-            financially. What do you guys think I should do?"></Post>);
-        }
+        {this.state.posts.map(post => (
+            posts.push(<Post post = {post}/>) 
+        ))}
         return <div>{posts}</div>;
     }
 }
