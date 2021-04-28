@@ -8,3 +8,8 @@ textarea {
   height: 0;
   padding-bottom: 60%;
 }
+
+#tags{
+  width: 100%;
+  padding: 1%;
+}
