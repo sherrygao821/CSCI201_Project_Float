@@ -16,8 +16,7 @@ class login extends Component {
         }
         // this.changeHandler = this.changeHandler.bind(this);
     }
-
-    
+  
 
     changeHandler = (e) =>{
         this.setState({[e.target.name]: e.target.value})
