@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
+import "../components/registerForm.css";
+
 
 class registerForm extends Component {
 
@@ -20,6 +23,7 @@ class registerForm extends Component {
         .then(function(response){
             console.log(response)
             if(response.status){
+                //this.setState({ state: this.state });
                 sessionStorage.setItem('uuid', response.data.data.uuid)
                 sessionStorage.setItem('postIDs', response.data.data.postIDs)
                 sessionStorage.setItem('likedPostIDs', response.data.data.likedPostIDs)
@@ -27,7 +31,8 @@ class registerForm extends Component {
             }
         })
         .catch(function(error){
-            alert(error.response.message);
+            //console.log(error)
+            alert(error.response.data.message);
         });
     }
 
@@ -38,14 +43,16 @@ class registerForm extends Component {
     }
 
     render(){
+        if (sessionStorage.length === 3) return <Redirect to="/" />;
+        //if (sessionStorage.length !== 0) return <Redirect to="/" />;
         const {account} = this.state;
 
         return (
             <div>
-                <h1>Register</h1>
-                <form onSubmit={this.handleSubmit}>
+                <h2>Register</h2>
+                <form id="register-form" onSubmit={this.handleSubmit}>
                     <div className ="form-group">
-                        <label htmlFor="email">Email address</label>
+                        <label htmlFor="email">Email address: </label>
                         <input 
                         value={account.email} 
                         onChange={this.handleChange}
@@ -56,7 +63,7 @@ class registerForm extends Component {
                         placeholder="Enter email"></input>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password">Password: </label>
                         <input 
                         value={account.password} 
                         onChange={this.handleChange}
@@ -67,7 +74,7 @@ class registerForm extends Component {
                         placeholder="Enter password"></input>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username">Username: </label>
                         <input 
                         value={account.username} 
                         onChange={this.handleChange}
@@ -77,7 +84,7 @@ class registerForm extends Component {
                         id="username" 
                         placeholder="Enter Username"></input>
                     </div>
-                    <button type="submit" className="btn btn-primary">Register</button>
+                    <button id="register-button" type="submit" >Register</button>
                 </form>
             </div>
         )

@@ -22,11 +22,11 @@ function App() {
           <Navbar />
             <Switch>
               <Route path='/register' exact component={registerForm} />
+              <Route path='/' exact component={Home} />
               <Route path='/dms' exact component={Dms} />
               <Route path='/notifications' exact component={Notifications} />
               <Route path='/profile' exact component={Profile} />
               <Route path='/login' exact component={loginPage} />
-              <Route path='/' exact component={Home} />
             </Switch>
           {/* </div> */}
       </Router>

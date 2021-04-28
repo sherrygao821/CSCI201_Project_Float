@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { Redirect } from "react-router-dom";
+import "../components/registerForm.css";
 
 class login extends Component {
     constructor(props) {
@@ -16,8 +17,8 @@ class login extends Component {
         }
         // this.changeHandler = this.changeHandler.bind(this);
     }
-  
 
+    
     changeHandler = (e) =>{
         this.setState({[e.target.name]: e.target.value})
     }
@@ -47,23 +48,28 @@ class login extends Component {
             sessionStorage.setItem('uuid', self.state.uuid)
             sessionStorage.setItem('postIDs', self.state.postIDs)
             sessionStorage.setItem('likedPostIDs', self.state.likedPostIDs)
-            console.log(sessionStorage)
         });
     }
     
     render() {
+        //console.log();
+        
+        if (sessionStorage.length === 3) return <Redirect to="/" />;
         const {email, psw} = this.state
         return (
             <div>
-                <form onSubmit={this.submitHandler}>
+                <h2>Log In</h2>
+                <form id="login-form" onSubmit={this.submitHandler}>
                     <div>
-                        <input type="text" name="email" value={email} onChange={this.changeHandler}/>
+                        <label htmlFor="email">Email address: </label>
+                        <input className="form-control" type="text" name="email" value={email} onChange={this.changeHandler}/>
                     </div>
                     <div>
-                        <input type="password" autoComplete="current-password" name="psw" value={psw} onChange={this.changeHandler}/>
+                        <label htmlFor="password">Password: </label>
+                        <input className="form-control" type="password" autoComplete="current-password" name="psw" value={psw} onChange={this.changeHandler}/>
                     </div>
                     <div>
-                        <button type="submit">Submit</button>
+                        <button id="login-button" type="submit">Submit</button>
                     </div>
                 </form>
                 
