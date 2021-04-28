@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../pages/Profile.css'
-import PostFeed from '../components/PostFeed'
+import Post from '../components/Post'
+import { InterpolateSmooth } from 'three';
 
 const selected = {
   background: "#FFFFFF",
@@ -13,37 +14,45 @@ const unselected = {
 };
 
 class Profile extends Component{
+  postIDs = JSON.parse(sessionStorage.getItem('postIDs'));
+  likedIDs = JSON.parse(sessionStorage.getItem('likedPostIDs'))
+
   constructor(props) {
     super(props);
     this.state = {
       currTab: "YourPosts",
       yourPosts: selected,
       likedPosts: unselected,
+      postFeed: this.postIDs
     };
   }
-  // TODO: return posts wrote by the user from the backend
+
   handleYourPosts = () => {
     if(this.state.currTab !== "YourPosts"){
-      console.log("here1");
       this.setState({
         currTab: "YourPosts",
         yourPosts: selected,
-        likedPosts: unselected
+        likedPosts: unselected,
+        postFeed: this.postIDs
       })
     }
   }
-  // TODO: return posts liked by the user from the backend
+
   handleLikedPosts = () => {
     if(this.state.currTab !== "LikedPosts"){
-      console.log("here2");
       this.setState({
         currTab: "LikedPosts",
         yourPosts: unselected,
-        likedPosts: selected
+        likedPosts: selected,
+        postFeed: this.likedIDs
       })
     }
   }
   render() {
+    var items = [];
+    for(var i = 0; i < this.state.postFeed.length; i++){
+      items.push()
+    }
     return (
       <div className='profile'>
       <div className="header">
@@ -51,7 +60,7 @@ class Profile extends Component{
         <label className="right" onClick={() => this.handleLikedPosts()} style={this.state.likedPosts}><span className="right-text">Liked posts</span></label>
       </div>
       <div className="posts">
-        <PostFeed></PostFeed>
+
       </div>
     </div>
     );

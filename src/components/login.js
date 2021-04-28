@@ -34,6 +34,7 @@ class login extends Component {
             }
         })
         .then(function (response) {
+            console.log(response);
             self.setState({
                 uuid: response.data.data.uuid,
                 postIDs: response.data.data.postIDs,
@@ -46,8 +47,9 @@ class login extends Component {
         })
         .then(function (){
             sessionStorage.setItem('uuid', self.state.uuid)
-            sessionStorage.setItem('postIDs', self.state.postIDs)
-            sessionStorage.setItem('likedPostIDs', self.state.likedPostIDs)
+            sessionStorage.setItem('postIDs', JSON.stringify(self.state.postIDs))
+            sessionStorage.setItem('likedPostIDs', JSON.stringify(self.state.likedPostIDs))
+            console.log(sessionStorage)
         });
     }
     
