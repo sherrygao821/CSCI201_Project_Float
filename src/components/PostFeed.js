@@ -33,8 +33,6 @@ class PostFeed extends Component{
 
     render() {
         
-        // TODO: receive json data of the feed from backend
-        
         let items = [];
         console.log(this.state.posts);
         // console.log(this.state.posts.data);
