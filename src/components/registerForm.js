@@ -23,15 +23,7 @@ class registerForm extends Component {
         })
         .then((response) => {
             console.log(response)
-            /*
-            if(response.status){
-                //this.setState({ state: this.state });
-                sessionStorage.setItem('uuid', response.data.data.uuid)
-                sessionStorage.setItem('postIDs', response.data.data.postIDs)
-                sessionStorage.setItem('likedPostIDs', response.data.data.likedPostIDs)
-                console.log(sessionStorage)
-            }
-            */
+            alert('You have signed up successfully. Welcome to Float! Please log in with the account you just registered');
             this.setState({
                 status: true
             })
