@@ -13,7 +13,8 @@ class login extends Component {
             usename: '',
             postIDs: [],
             likedPostIDs: [],
-            redirect :false
+            redirect :false,
+            status: false
         }
         // this.changeHandler = this.changeHandler.bind(this);
     }
@@ -36,23 +37,23 @@ class login extends Component {
                 'Content-Type': 'application/json'
             }
         })
-        .then(function (response) {
+        .then((response) => {
             console.log(response);
             self.setState({
                 uuid: response.data.data.uuid,
                 postIDs: response.data.data.postIDs,
                 likedPostIDs: response.data.data.likedPostIDs
             })
-            
-        })
-        .catch(function (error) {
-            alert(error.response.data.message)
-        })
-        .then(function (){
             sessionStorage.setItem('uuid', self.state.uuid)
             sessionStorage.setItem('postIDs', JSON.stringify(self.state.postIDs))
             sessionStorage.setItem('likedPostIDs', JSON.stringify(self.state.likedPostIDs))
             console.log(sessionStorage)
+            this.setState({
+                status: true
+            })
+        })
+        .catch(function (error) {
+            alert(error.response.data.message)
         });
     }
     
@@ -60,7 +61,7 @@ class login extends Component {
         //console.log();
         if (this.state.redirect === true) return <Redirect to="/register" />;
         
-        if (sessionStorage.length === 3) return <Redirect to="/" />;
+        if (this.state.status) return <Redirect to="/" />;
         const {email, psw} = this.state
         return (
             <div>

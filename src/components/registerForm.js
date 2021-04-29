@@ -9,7 +9,8 @@ class registerForm extends Component {
     state = {
         account : {
             email:'', password:'', username:''
-        }
+        },
+        status: false
     };
 
     handleSubmit = e => {
@@ -20,8 +21,9 @@ class registerForm extends Component {
             password: this.state.account.password,
             username: this.state.account.username
         })
-        .then(function(response){
+        .then((response) => {
             console.log(response)
+            /*
             if(response.status){
                 //this.setState({ state: this.state });
                 sessionStorage.setItem('uuid', response.data.data.uuid)
@@ -29,9 +31,13 @@ class registerForm extends Component {
                 sessionStorage.setItem('likedPostIDs', response.data.data.likedPostIDs)
                 console.log(sessionStorage)
             }
+            */
+            this.setState({
+                status: true
+            })
         })
-        .catch(function(error){
-            //console.log(error)
+        .catch((error) => {
+            console.log(error)
             alert(error.response.data.message);
         });
     }
@@ -43,7 +49,7 @@ class registerForm extends Component {
     }
 
     render(){
-        if (sessionStorage.length === 3) return <Redirect to="/" />;
+        if (this.state.status) return <Redirect to="/login" />;
         //if (sessionStorage.length !== 0) return <Redirect to="/" />;
         const {account} = this.state;
 
