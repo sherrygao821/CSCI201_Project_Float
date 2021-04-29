@@ -5,10 +5,6 @@ import { Redirect } from "react-router-dom";
 import "../pages/Notification.css";
 import { Component } from 'react';
 
-
-
-
-
 class Notifications extends Component {
   constructor(props) {
     super(props)

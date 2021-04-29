@@ -4,10 +4,11 @@ import { Component } from 'react';
 
 class TagPage extends Component {
   items = [];
+  status;
   constructor(props) {
     super(props);
     this.state = {
-      posts: false
+      posts: []
     };
   }
 
@@ -18,19 +19,23 @@ class TagPage extends Component {
         for (var i = 0; i < response.data.data.length; i++) {
           console.log(response.data.data[i]);
           this.items.push(<Post post={response.data.data[i]} />)
+          this.status = true;
         }
-      });
+      }).catch((error) => {
+        console.log(error);
+        this.status = false;
+      })
     this.setState({
       posts: this.items
     })
   }
 
   render() {
-    if(this.state.posts === false){
+    if(this.status === false){
       return(
         <div style={{fontFamily: "Roboto", fontStyle: "normal", fontWeight: "normal", fontSize: 36,color: "#626262", marginTop: 50, textAlign: "center", textDecoration: "underline"}}>
-          #{this.props.location.state.tag}
-        </div>
+            #{this.props.location.state.tag} has no posts.
+          </div>
       );
     }
     else{
@@ -39,7 +44,7 @@ class TagPage extends Component {
           <div style={{fontFamily: "Roboto", fontStyle: "normal", fontWeight: "normal", fontSize: 36,color: "#626262", marginTop: 50, textAlign: "center", textDecoration: "underline"}}>
             #{this.props.location.state.tag}
           </div>
-          <div>
+          <div style={{height: 600, width: 800, overflow: "scroll"}}>
             {this.state.posts}
           </div>
         </div>

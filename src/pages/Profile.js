@@ -4,14 +4,14 @@ import Post from '../components/Post';
 import axios from 'axios';
 import AXIOS from 'axios';
 
-const selected = {
+const unselected = {
   background: "#FFFFFF",
   color: "#626262",
-  zIndex: 1
 };
-const unselected = {
+const selected = {
   background: '#82ACA2',
   color:'#FFFFFF',
+  zIndex: 1
 };
 
 class Profile extends Component{

@@ -6,7 +6,8 @@ import "../components/SearchBar.css";
 class PostFeed extends Component{
     state = {
         posts : {status: false},
-        inputWord: ""
+        inputWord: "",
+        status: true
     }
 
     
@@ -37,6 +38,9 @@ class PostFeed extends Component{
     };
     
     searchWord = () => {
+        this.setState({
+            status: true
+        })
         if (this.state.inputWord.trim() !== "") {
           // TODO: use API to search for words/tags
           const keyword = this.state.inputWord.trim();
@@ -48,6 +52,11 @@ class PostFeed extends Component{
             this.setState({
                 posts:response.data
             });
+          }).catch((error) => {
+            console.log(error);
+            this.setState({
+                status: false
+            })
           })
         }
     };
@@ -56,6 +65,23 @@ class PostFeed extends Component{
         
         let items = [];
         
+        if (!this.state.status) {
+            return (
+                <div id="parent">
+                    <div className="searchBar">
+                        <img className="left" src="/icons/search.png" alt="" />
+                        <input
+                            className="mid"
+                            onChange={(e) => this.bindChange(e)}
+                            placeholder="Search for keywords or tags"></input>
+                        <button className="right" onClick={() => this.searchWord()}>search</button>
+                    </div>
+
+                    <div style={{textAlign: "center", color: "#626262", marginTop: 20}}>No Result</div>
+                </div>
+            )
+        }
+
         if(this.state.posts.status === true){
             console.log("length:" + this.state.posts.data.length);
             this.state.posts.data.map((post, i) => 
