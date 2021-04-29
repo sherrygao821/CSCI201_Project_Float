@@ -10,6 +10,7 @@ textarea {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
+  border-radius: 10px;
 }
 
 #tags{
