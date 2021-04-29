@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../pages/Profile.css';
 import Post from '../components/Post';
 import axios from 'axios';
-import AXIOS from 'axios';
 import { Redirect } from "react-router-dom";
 
 const unselected = {
