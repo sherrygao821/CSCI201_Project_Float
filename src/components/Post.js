@@ -5,7 +5,8 @@ import Comment from '../components/Comment';
 import axios from 'axios';
 
 class Post extends Component {
-    isLiked = [];
+    isLiked = JSON.parse(sessionStorage.getItem('likedPostIDs'));
+    randomNames = ["cute alligator", "aggresive anteater", "nice armadillo", "interesting bat", "handsome bear", "delightful beaver", "fancy buffalo", "itchy camel", "nervous chameleon", "quiet cheetah", "lazy coyote", "jolly crow", "delicious goose", "obnoxious llama"];
     state = {
         modalIsOpened: false,
         postComments: [],
@@ -15,54 +16,52 @@ class Post extends Component {
         likePost: false
     }
 
-    constructor(props) {
-        super(props);
-        this.presentHeart();
-    };
-
-    presentHeart = () => {
-        this.isLiked = JSON.parse(sessionStorage.getItem('likedPostIDs'));
+    async componentDidMount(){
         for(var i = 0; i < this.isLiked.length; i++){
             if(this.isLiked[i] === this.props.post.postID){
-                this.state.likePost = true;
-                this.state.heartPath = "/icons/heart.png";
+                console.log("comment numbered " + this.props.post.postID + " is liked");
+                this.setState({
+                    likePost: true,
+                    heartPath: "/icons/heart.png"
+                });
                 break;
             }
         }
     }
 
     handleHeart = () => {
-        console.log("this.state.likePost: " + this.state.likePost);
         if (this.state.likePost) {
             this.setState({
-                heartPath: "/icons/unheart.png"
+                heartPath: "/icons/unheart.png",
+                likePost: false
             })
-            console.log(this.state.heartPath);
             axios.post('http://35.236.53.120:3000/api/post/dislike', {
                 postID: this.props.post.postID,
 			    userUuid: sessionStorage.getItem('uuid')
             }).then((response) => {
-                this.state.likePost = false;
                 for(var i = 0; i < this.isLiked.length; i++){
                     if(this.isLiked[i] === this.props.post.postID){
                         this.isLiked.splice(i, 1);
                         sessionStorage.setItem('likedPostIDs', JSON.stringify(this.isLiked));
+                        console.log("deleting " + this.props.post.postID + " with content " + this.props.post.content);
+                        console.log(sessionStorage.getItem('likedPostIDs'))
                         break;
                     }
                 }
             })
         } else {
             this.setState({
-                heartPath: "/icons/heart.png"
+                heartPath: "/icons/heart.png",
+                likePost: true
             })
             axios.post('http://35.236.53.120:3000/api/post/like', {
                 postID: this.props.post.postID,
 			    userUuid: sessionStorage.getItem('uuid')
             }).then((response) => {
-                this.state.likePost = true;
                 this.isLiked.push(this.props.post.postID);
                 sessionStorage.setItem('likedPostIDs', JSON.stringify(this.isLiked))
-
+                console.log("adding " + this.props.post.postID + " with content " + this.props.post.content);
+                console.log(sessionStorage.getItem('likedPostIDs'))
             })
         }
     };
@@ -86,14 +85,18 @@ class Post extends Component {
         console.log("postID: " + this.props.post.postID);
         if (this.state.inputComment.trim() !== "") {
             // Calling API: add the comment to the post
-            
+            var name = this.randomNames[Math.floor(Math.random() * this.randomNames.length)];
             axios.post('http://35.236.53.120:3000/api/comment/make/' + this.props.post.postID, {
-                anonymousPosterName: this.state.anonymousName,
+                anonymousPosterName: name,
                 content: this.state.inputComment
             }).then((response) => {
                 console.log(response);
                 alert("Your comment is created successfully");
-                // TODO: add the new post to the current page
+                var temp = this.state.postComments;
+                temp.push({anonymousPosterName: name, content: this.state.inputComment});
+                this.setState({
+                    postComments: temp
+                })
             }, (error) => {
                 console.log(error);
             });
@@ -113,17 +116,17 @@ class Post extends Component {
             comments.push(<Comment key={i} name={comment.anonymousPosterName} content={comment.content} />)
         ))
         return (
-            <div className="wrap">
-                <div className="top">
-                    <span className="name">{this.props.post.anonymousPosterName}</span>
-                    {this.props.post.tags.map((tag, i) => <span className="tags" key={i}>{tag}</span>)}
+            <div className="wrapPost">
+                <div className="topPost">
+                    <span className="namePost">{this.props.post.anonymousPosterName}</span>
+                    {this.props.post.tags.map((tag, i) => <span className="tagsPost" key={i}>{tag}</span>)}
                 </div>
-                <div className="mid">
+                <div className="midPost">
                     {this.props.post.content}
                 </div>
-                <div className="bot">
-                    <input id="heart" type="image" src={this.state.heartPath} alt="" className="heart" onClick={() => this.handleHeart()} />
-                    <input id="comment" type="image" src="/icons/comment.png" alt="" className="comment" onClick={() => this.handleComment()} />
+                <div className="botPost">
+                    <input id="heart" type="image" src={this.state.heartPath} alt="" className="heartPost" onClick={() => this.handleHeart()} />
+                    <input id="comment" type="image" src="/icons/comment.png" alt="" className="commentPost" onClick={() => this.handleComment()} />
                 </div>
                 <div>
                     <Modal isOpen={this.state.modalIsOpened} ariaHideApp={false} style={{
@@ -142,7 +145,7 @@ class Post extends Component {
                             padding: '20px'
                         }
                     }}>
-                        <button onClick={() => this.closeModal()}>close</button>
+                        <button className="commentCloseButton" onClick={() => this.closeModal()}>close</button>
                         <div>{comments}</div>
                         <div className="commentBar">
                             <input

@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
 import PostFeed from '../components/PostFeed';
 import TagWall from '../components/TagWall';
 import { Redirect } from "react-router-dom";

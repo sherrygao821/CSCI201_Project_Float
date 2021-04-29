@@ -1,10 +1,9 @@
 .profile{
-  bottom: 20px;
+  display: block;
 }
 .profile .header {
   margin-top: 66px;
   margin-left: 100px;
-  position:relative;
 }
 .profile .header .left .left-text {
   font-family: Roboto;
@@ -39,7 +38,7 @@
 }
 
 .profile .profilePosts{
-  height: 800px;
+  height: 600px;
   width: 800px;
-  overflow:scroll;
+  overflow: scroll;
 }

@@ -4,6 +4,7 @@ import './addpost.css'
 
 
 function Addpost(props){
+    const randomNames = ["cute alligator", "aggresive anteater", "nice armadillo", "interesting bat", "handsome bear", "delightful beaver", "fancy buffalo", "itchy camel", "nervous chameleon", "quiet cheetah", "lazy coyote", "jolly crow", "delicious goose", "obnoxious llama"]
     const [text, setText] = useState('')
     const [tags, setTags] = useState('')
 
@@ -25,16 +26,17 @@ function Addpost(props){
       axios.post('http://35.236.53.120:3000/api/post/make', {
         content: text,
         tags: tagsArr,
-        anonymousPosterName: sessionStorage.getItem('uuid'),
+        anonymousPosterName: randomNames[Math.floor(Math.random() * randomNames.length)],
         userUuid: sessionStorage.getItem('uuid')
       })
       .then(function (response) {
-        console.log(response)
+        console.log(response.data.data.postID)
+        var temp = [];
+        temp = JSON.parse(sessionStorage.getItem('postIDs'));
+        temp.push(response.data.data.postID);
+        sessionStorage.setItem('postIDs', JSON.stringify(temp));
+        console.log(sessionStorage.getItem('postIDs'));
       })
-      .catch(function (error) {
-        console.log(error.request)
-      })
-      
     }
   
       return (
