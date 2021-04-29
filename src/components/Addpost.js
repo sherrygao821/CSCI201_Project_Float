@@ -42,11 +42,11 @@ function Addpost(props){
       return (
         <div id="addPostDiv">
           <form onSubmit={handleSubmit}>
-              <input type="text" id="tags" placeholder="tags... (separate by comma)" onChange={handleChangeTags} />
+              <input type="text" id="tags" placeholder="tags... (separate by comma)" style={{border: "none", color: "#626262", paddingLeft: 10, borderRadius: 20, outline: "none"}} onChange={handleChangeTags} />
               <br></br><br></br>
-              <textarea id="post" placeholder="what's on your mind...?" onChange={handleChangeText} />
+              <textarea id="post" placeholder="what's on your mind...?" style={{border: "none", color: "#626262", paddingLeft: 20, paddingTop: 20, paddingRight: 20, borderRadius: 20, outline: "none"}} onChange={handleChangeText} />
               
-              <input id="submit" type="submit" value="Publish" />
+              <input id="submit" type="submit" value="Publish" style={{border: 'none', padding: 10,borderRadius: 20}}/>
           </form>
         </div>
       );

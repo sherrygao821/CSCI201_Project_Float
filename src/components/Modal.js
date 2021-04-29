@@ -9,7 +9,7 @@ const Modal = props => {
             <div className = "modal-content" onClick = {e => e.stopPropagation()}>
                 <div className = "modal-header">
                     <div id="closeButtonDiv">
-                        <button id="close" onClick={props.onClose} className = "button">Close</button>
+                        <button id="close" onClick={props.onClose} className = "button" style={{border: 'none', padding: 10,borderRadius: 20}}>Close</button>
                     </div>
                     <div id="titleDiv">
                         <h4 id="title">{props.title}</h4>

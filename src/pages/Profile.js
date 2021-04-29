@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../pages/Profile.css';
 import Post from '../components/Post';
 import axios from 'axios';
-import AXIOS from 'axios';
 import { Redirect } from "react-router-dom";
 
 const unselected = {
@@ -29,7 +28,7 @@ class Profile extends Component{
   async componentDidMount() {
     this.yourPosts = [];
     var postIDs = [];
-    if(sessionStorage.length!=0){
+    if(sessionStorage.length!==0){
       postIDs = JSON.parse(sessionStorage.getItem('postIDs'));
       // console.log("storage length: " + postIDs.length);
       for (var i = 0; i < postIDs.length; i++) {
