@@ -12,13 +12,16 @@ class login extends Component {
             uuid: '',
             usename: '',
             postIDs: [],
-            likedPostIDs: []
-
+            likedPostIDs: [],
+            redirect :false
         }
         // this.changeHandler = this.changeHandler.bind(this);
     }
 
-    
+    HandleClick = () => {
+        this.setState({redirect:true});
+    }
+
     changeHandler = (e) =>{
         this.setState({[e.target.name]: e.target.value})
     }
@@ -55,6 +58,7 @@ class login extends Component {
     
     render() {
         //console.log();
+        if (this.state.redirect === true) return <Redirect to="/register" />;
         
         if (sessionStorage.length === 3) return <Redirect to="/" />;
         const {email, psw} = this.state
@@ -70,9 +74,12 @@ class login extends Component {
                         <label htmlFor="password">Password: </label>
                         <input className="form-control" type="password" autoComplete="current-password" name="psw" value={psw} onChange={this.changeHandler}/>
                     </div>
+                    <label htmlFor="toRegister-button">Not registered? </label>
+                    <button id="toRegister-button" onClick={this.HandleClick}>Go register</button>
                     <div>
                         <button id="login-button" type="submit">Submit</button>
                     </div>
+                    
                 </form>
                 
             </div>
