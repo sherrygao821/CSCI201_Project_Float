@@ -1,14 +1,12 @@
-.header {
+.profile{
+  bottom: 20px;
+}
+.profile .header {
   margin-top: 66px;
   margin-left: 100px;
+  position:relative;
 }
-.header .left {
-  height: 60px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-  position: relative;
-}
-.header .left .left-text {
+.profile .header .left .left-text {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -17,17 +15,15 @@
   text-align: center;
   padding-left: 80px;
   padding-right: 80px;
+  border-radius: 24px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-.header .right {
+.profile .header .right {
   width: 312px;
-  height: 60px;
-  box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 24px;
-  position: relative;
   margin-left: -40px;
-  color: #FFFFFF;
 }
-.header .right .right-text {
+.profile .header .right .right-text {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -36,4 +32,14 @@
   text-align: center;
   padding-left: 80px;
   padding-right: 80px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 24px;
+  box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.profile .posts{
+  height: 800px;
+  width: 800px;
+  overflow:scroll;
 }
