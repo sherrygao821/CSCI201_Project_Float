@@ -15,8 +15,6 @@ class Notifications extends Component {
  
   }
   componentDidMount(){
-    if (sessionStorage.length === 0) return <Redirect to="/login" />;
-
     var url = 'http://35.236.53.120:3000/api/notification/get?userid=' + sessionStorage.getItem('uuid') ;
     var self=this;
     axios.get(url)
@@ -60,7 +58,9 @@ class Notifications extends Component {
   }
 
   render(){
+    if (sessionStorage.length === 0) return <Redirect to="/login" />;
     return (
+      
       <div className='notifications'>
         <div className="title">Notifications</div>
         <div>{this.state.notes}</div>

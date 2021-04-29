@@ -3,6 +3,7 @@ import '../pages/Profile.css';
 import Post from '../components/Post';
 import axios from 'axios';
 import AXIOS from 'axios';
+import { Redirect } from "react-router-dom";
 
 const unselected = {
   background: "#FFFFFF",
@@ -28,18 +29,19 @@ class Profile extends Component{
   async componentDidMount() {
     this.yourPosts = [];
     var postIDs = [];
-    postIDs = JSON.parse(sessionStorage.getItem('postIDs'));
-    console.log("storage length: " + postIDs.length);
-    for (var i = 0; i < postIDs.length; i++) {
-      axios.get("http://35.236.53.120:3000/api/post/read?postid=" + postIDs[i])
-        .then((response) => {
-          this.yourPosts.push(<Post post = {response.data.data}/>)
-          this.setState({
-            items: this.yourPosts
+    if(sessionStorage.length!=0){
+      postIDs = JSON.parse(sessionStorage.getItem('postIDs'));
+      // console.log("storage length: " + postIDs.length);
+      for (var i = 0; i < postIDs.length; i++) {
+        axios.get("http://35.236.53.120:3000/api/post/read?postid=" + postIDs[i])
+          .then((response) => {
+            this.yourPosts.push(<Post post = {response.data.data}/>)
+            this.setState({
+              items: this.yourPosts
+            })
           })
-        })
+      }
     }
-    
   }
 
   async getLikedPosts(){
@@ -50,7 +52,7 @@ class Profile extends Component{
     console.log("storage length: " + likedIDs.length);
     for (var j = 0; j < likedIDs.length; j++) {
       console.log(j + " ID: " + likedIDs[j]);
-      AXIOS.get("http://35.236.53.120:3000/api/post/read?postid=" + likedIDs[j])
+      axios.get("http://35.236.53.120:3000/api/post/read?postid=" + likedIDs[j])
         .then((response) => {
           this.likePosts.push(<Post post = {response.data.data}/>)
           this.setState({
@@ -87,6 +89,7 @@ class Profile extends Component{
   }
 
   render() {
+    if (sessionStorage.length === 0) return <Redirect to="/login" />;
     return (
       <div className='profile'>
         <div className="header">
