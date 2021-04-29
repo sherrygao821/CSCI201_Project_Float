@@ -147,7 +147,7 @@ class Post extends Component {
                     }}>
                         <button className="commentCloseButton" onClick={() => this.closeModal()}>close</button>
                         <div>{comments}</div>
-                        <div className="commentBar">
+                        <div className="commentBar" style={{position: "fixed", marginBottom: 130, marginLeft: 16}}>
                             <input
                                 className="input"
                                 onChange={(e) => this.bindChange(e)}
