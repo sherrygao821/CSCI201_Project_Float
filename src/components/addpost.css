@@ -7,9 +7,40 @@ textarea {
   margin: 0;
   height: 0;
   padding-bottom: 60%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
 }
 
 #tags{
   width: 100%;
-  padding: 1%;
+  padding: 1.5%;
+  font-size: 17px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+}
+
+#post{
+  font-size: 17px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+}
+
+#submit{
+  border-radius: 8px;
+  font-size:17px;
+  padding: 0.8%;
+  background-color: #83ACA2;
+  border-color: #dbdbdb;
+  color: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+}
+
+#submit:hover{
+  cursor: pointer;
+  
 }

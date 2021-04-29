@@ -40,13 +40,15 @@ function Addpost(props){
     }
   
       return (
-
-        <form onSubmit={handleSubmit}>
-            <input type="text" id="tags" placeholder="tags... (separate by comma)" onChange={handleChangeTags} />
-            <textarea placeholder="what's on your mind...?" onChange={handleChangeText} />
-            
-            <input type="submit" value="Submit" />
-        </form>
+        <div id="addPostDiv">
+          <form onSubmit={handleSubmit}>
+              <input type="text" id="tags" placeholder="tags... (separate by comma)" onChange={handleChangeTags} />
+              <br></br><br></br>
+              <textarea id="post" placeholder="what's on your mind...?" onChange={handleChangeText} />
+              
+              <input id="submit" type="submit" value="Publish" />
+          </form>
+        </div>
       );
   }
 
