@@ -36,3 +36,13 @@ h2 {
   color: white;
   margin-top: 30px;
 }
+
+#toRegister-button {
+  padding: 12px 10px;
+  border: none;
+  font-size: 18px;
+  border-radius: 30px;
+  background-color: rgba(141, 204, 219, 0.87);
+  color: white;
+  margin-top: 100px;
+}
