@@ -8,6 +8,7 @@ import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
 import loginPage from './pages/loginPage';
 import registerForm from './components/registerForm';
+import TagPage from './components/TagPage';
 // import Addpost from './components/Addpost';
 
 
@@ -27,6 +28,8 @@ function App() {
               <Route path='/notifications' exact component={Notifications} />
               <Route path='/profile' exact component={Profile} />
               <Route path='/login' exact component={loginPage} />
+              <Route path='/tagPage/:tag' component={() => <TagPage tag={null} />} />
+              <Route path="/tagPage" render={(props) => <TagPage {...props}/>}/>
             </Switch>
           {/* </div> */}
       </Router>

@@ -75,7 +75,7 @@ class Profile extends Component{
         <label className="left" onClick={() => this.handleYourPosts()}><span className="left-text" style={this.state.yourPostsStyle}>Your posts</span></label>
         <label className="right" onClick={() => this.handleLikedPosts()}><span className="right-text" style={this.state.likedPostsStyle}>Liked posts</span></label>
       </div>
-      <div className="posts">
+      <div className="profilePosts">
         {this.state.items}
       </div>
     </div>
