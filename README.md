@@ -1,6 +1,5 @@
 
 # How to run:
-Frontend Deployment:
 ## 1. 
 Install [node.js](https://nodejs.org/en/download/).
 ## 2. 
